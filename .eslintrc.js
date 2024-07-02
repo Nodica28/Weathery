@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier', 'unused-imports'],
   rules: {
-    'prettier/prettier': ['error', { usePrettierrc: true }],
+    'prettier/prettier': ['error', { usePrettierrc: true, endOfLine: 'auto' }],
     'unused-imports/no-unused-imports': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
