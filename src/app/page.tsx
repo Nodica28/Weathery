@@ -1,12 +1,13 @@
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './_components/ui/tabs'
+import Today from './_components/today'
 
 export default function Home() {
   const tabs = [
     {
       value: 'today',
       label: 'Today',
-      content: 'Today View',
+      content: <Today />,
     },
     {
       value: 'hourly',

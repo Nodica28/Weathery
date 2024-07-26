@@ -17,6 +17,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from './ui/tooltip'
+import SearchBar from './ui/search-bar'
 import Link from 'next/link'
 
 export default function Header() {
@@ -76,7 +77,11 @@ export default function Header() {
           </a>
         </div>
         <div className="flex lg:flex-1">
-          <NavigationMenu />
+          <NavigationMenu>
+            <NavigationMenuItem>
+              <SearchBar />
+            </NavigationMenuItem>
+          </NavigationMenu>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-start">
           <NavigationMenu>
