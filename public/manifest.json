@@ -1,0 +1,12 @@
+{
+  "name": "Weathery",
+  "short_name": "Weathery",
+  "icons": [
+    {
+      "src": "/weathery_icon_only.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    }
+  ],
+  "display": "standalone"
+}
