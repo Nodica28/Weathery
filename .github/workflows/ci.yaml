@@ -13,27 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: '^8'
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '^20'
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Lint
-        run: pnpm lint
+        run: npm run lint
 
       - name: Build
-        run: pnpm build
+        run: npm run build
 
       # TODO: Setup test infra
       # - name: Run Tests
-      #   run: pnpm test
+      #   run: npm test
 
       # TODO: Setup staging deployment
