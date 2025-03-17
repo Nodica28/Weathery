@@ -1,3 +1,4 @@
+'use client'
 import weathery_logo from '@/app/_assets/weathery_logo.png'
 import weathery_icon_only from '@/app/_assets/weathery_icon_only.svg'
 import Image from 'next/image'
@@ -19,8 +20,17 @@ import {
 } from './ui/tooltip'
 import SearchBar from './ui/search-bar'
 import Link from 'next/link'
+import { Switch } from './ui/switch'
+import { Label } from './ui/label'
+import { useState, useEffect } from 'react'
 
 export default function Header() {
+  const [isCelsius, setIsCelsius] = useState(true)
+
+  useEffect(() => {
+    const storedUnit = localStorage.getItem('temperatureUnit')
+    setIsCelsius(storedUnit !== 'fahrenheit')
+  }, [])
   const features = [
     {
       title: 'Real-Time Alerts',
@@ -60,6 +70,22 @@ export default function Header() {
     },
   ]
 
+  const changeUnits = (checked: boolean) => {
+    const unit = checked
+      ? {
+          temperature: 'fahrenheit',
+          wind_speed: 'mph',
+          precipitation: 'inch',
+        }
+      : {
+          temperature: 'celsius',
+          wind_speed: 'kph',
+          precipitation: 'mm',
+        }
+    localStorage.setItem('measurementUnits', JSON.stringify(unit))
+    setIsCelsius(!checked)
+  }
+
   return (
     <div className="bg-white">
       <nav
@@ -80,6 +106,29 @@ export default function Header() {
           <NavigationMenu>
             <NavigationMenuItem>
               <SearchBar />
+            </NavigationMenuItem>
+          </NavigationMenu>
+        </div>
+        <div className="flex">
+          <NavigationMenu>
+            <NavigationMenuItem className="flex items-center gap-2">
+              <Label
+                htmlFor="unit-switch"
+                className={isCelsius ? 'font-bold' : ''}
+              >
+                °C
+              </Label>
+              <Switch
+                id="unit-switch"
+                checked={!isCelsius}
+                onCheckedChange={changeUnits}
+              />
+              <Label
+                htmlFor="unit-switch"
+                className={!isCelsius ? 'font-bold' : ''}
+              >
+                °F
+              </Label>
             </NavigationMenuItem>
           </NavigationMenu>
         </div>
