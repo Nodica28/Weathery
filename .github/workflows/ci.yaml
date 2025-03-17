@@ -13,10 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: npm/action-setup@v3
-        with:
-          version: '^8'
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -27,10 +23,10 @@ jobs:
         run: npm install
 
       - name: Lint
-        run: npm lint
+        run: npm run lint
 
       - name: Build
-        run: npm build
+        run: npm run build
 
       # TODO: Setup test infra
       # - name: Run Tests
